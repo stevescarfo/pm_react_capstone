@@ -1,25 +1,42 @@
+import React, { Component } from "react";
+import { Switch, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import PoliciesList from "./components/policies-list.component";
+import PolicyAdd from "./components/policy-add.component";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <nav>
+          <li>
+            <Link to="/policies">
+              Policies
+            </Link>
+          </li>
+          <li>
+            <Link to="/policyAdd">
+              Add Policy
+            </Link>
+          </li>
+          <li>
+            <Link to="/">
+              Home
+            </Link>
+          </li>
+        </nav>
+
+        <div>
+          <Switch>
+            <Route exact path={"/policies"} component={PoliciesList} />
+            <Route exact path={"/policyAdd"} component={PolicyAdd} />
+          </Switch>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
